@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ConexionHealz</string>
+    <string name="button_connect">Conexion</string>
+    <string name="button_disconnect">Desconexion</string>
+    <string name="title_devices">Dispositivos</string>
+    <string name="action_settings">Opciones</string>
+    <string name="scan">Escaneando</string>
+    <string name="stopScan">Ya no escanea</string>
+</resources>
