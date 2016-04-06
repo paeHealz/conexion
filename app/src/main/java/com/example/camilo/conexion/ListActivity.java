@@ -32,9 +32,9 @@ public class ListActivity extends ActionBarActivity implements DeviceListFragmen
         // Phone does not support Bluetooth so let the user know and exit.
         if (BTAdapter == null) {
             new AlertDialog.Builder(this)
-                    .setTitle("Not compatible")
-                    .setMessage("Your phone does not support Bluetooth")
-                    .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                    .setTitle("no compatible")
+                    .setMessage("tu telefono no acepta bluetooth")
+                    .setPositiveButton("salir", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             System.exit(0);
                         }
@@ -64,13 +64,9 @@ public class ListActivity extends ActionBarActivity implements DeviceListFragmen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        int id = item.getItemId();
+         if (id == R.id.action_settings) {
             return true;
         }
 

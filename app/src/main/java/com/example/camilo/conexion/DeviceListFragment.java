@@ -31,15 +31,8 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
     private OnFragmentInteractionListener mListener;
     private static BluetoothAdapter bTAdapter;
 
-    /**
-     * The fragment's ListView/GridView.
-     */
     private AbsListView mListView;
 
-    /**
-     * The Adapter which will be used to populate the ListView/GridView with
-     * Views.
-     */
     private ArrayAdapter<DeviceItem> mAdapter;
 
 
@@ -49,9 +42,7 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 Log.d("DEVICELIST", "Bluetooth device found\n");
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                // Create a new device item
                 DeviceItem newDevice = new DeviceItem(device.getName(), device.getAddress(), "false");
-                // Add it to our adapter
                 mAdapter.add(newDevice);
                 mAdapter.notifyDataSetChanged();
             }
@@ -60,17 +51,12 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
 
 
 
-    // TODO: Rename and change types of parameters
     public static DeviceListFragment newInstance(BluetoothAdapter adapter) {
         DeviceListFragment fragment = new DeviceListFragment();
         bTAdapter = adapter;
         return fragment;
     }
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public DeviceListFragment() {
     }
 
@@ -90,7 +76,6 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
             }
         }
 
-        // If there are no devices, add an item that states so. It will be handled in the view.
         if(deviceItemList.size() == 0) {
             deviceItemList.add(new DeviceItem("No Devices", "", "false"));
         }
@@ -154,19 +139,10 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
 
         Log.d("DEVICELIST", "onItemClick position: " + position +
                 " id: " + id + " name: " + deviceItemList.get(position).getDeviceName() + "\n");
-        if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(deviceItemList.get(position).getDeviceName());
-        }
+
 
     }
 
-    /**
-     * The default content for this Fragment has a TextView that is shown when
-     * the list is empty. If you would like to change the text, call this method
-     * to supply the text it should use.
-     */
     public void setEmptyText(CharSequence emptyText) {
         View emptyView = mListView.getEmptyView();
 
@@ -175,18 +151,7 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         public void onFragmentInteraction(String id);
     }
 
