@@ -41,6 +41,11 @@ public class ConnectThread extends Thread{
         return true;
     }
 
+    public void run() {
+        Log.i("connect.java", "BEGIN mConnectThread SocketType:");
+   connect();
+    }
+
     public boolean cancel() {
         try {
             bTSocket.close();
